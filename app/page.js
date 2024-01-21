@@ -23,7 +23,7 @@ export default function Page() {
   return (
     <>
       <h1>Casdoor Nextjs-Auth example</h1>
-      <button onClick={handleLogin}>login</button>
+      <button onClick={handleLogin}>Login</button>
     </>
   );
 }

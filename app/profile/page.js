@@ -30,39 +30,33 @@ export default function Page() {
       <hr />
       <div className="container">
         <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Value</th>
-            </tr>
-          </thead>
           <tbody>
-            <tr>
-              <td>user name</td>
-              <td>{userJson.name}</td>
-            </tr>
-            <tr>
-              <td>user avatar</td>
-              <td>
-                <img src={userJson.avatar}></img>
-              </td>
-            </tr>
-            <tr>
-              <td>user id</td>
-              <td>{userJson.sub}</td>
-            </tr>
-            <tr>
-              <td>user owner</td>
-              <td>{userJson.owner}</td>
-            </tr>
-            <tr>
-              <td>user created time</td>
-              <td>{userJson.createdTime}</td>
-            </tr>
+          <tr>
+            <td>Organization</td>
+            <td>{userJson.owner}</td>
+          </tr>
+          <tr>
+            <td>Username</td>
+            <td>{userJson.name}</td>
+          </tr>
+          <tr>
+            <td>Avatar</td>
+            <td>
+              <img src={userJson.avatar}></img>
+            </td>
+          </tr>
+          <tr>
+            <td>User ID</td>
+            <td>{userJson.sub}</td>
+          </tr>
+          <tr>
+            <td>Created Time</td>
+            <td>{userJson.createdTime}</td>
+          </tr>
           </tbody>
         </table>
-        <br />
-        <button onClick={handleLogout}>logout</button>
+        <br/>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     </>
   );
