@@ -5,11 +5,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Configuration
 ```plaintext
-CASDOOR_ENDPOINT=https://door.casdoor.com // Casdoor server URL
 CASDOOR_REDIRECT_URI=http://localhost:3000/login
+CASDOOR_ENDPOINT=https://door.casdoor.com
 NEXT_PUBLIC_CASDOOR_CLIENT_ID=294b09fbc17f95daf2fe
 NEXT_PUBLIC_CASDOOR_CLIENT_SECRET=dd8982f7046ccba1bbd7851d5c1ece4e52bf039d
-CASDOOR_APPLICATION_NAME=casbin
+CASDOOR_APPLICATION_NAME=app-vue-python-example
+CASDOOR_ORGANIZATION_NAME=casbin
 ```
 
 ## Getting Started
