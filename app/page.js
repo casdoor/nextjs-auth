@@ -1,11 +1,16 @@
 "use client";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-export default function Page(params) {
+export default function Page() {
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push("/profile");
+  };
   return (
     <>
-      <h1>Hello, Home page!</h1>
-      <Link href="/profile">Profile</Link>
+      <h1>Casdoor Nextjs-Auth example</h1>
+      <button onClick={handleLogin}>login</button>
     </>
   );
 }
