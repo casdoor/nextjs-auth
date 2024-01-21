@@ -43,7 +43,9 @@ export default function Page() {
             </tr>
             <tr>
               <td>user avatar</td>
-              <td>{userJson.avatar}</td>
+              <td>
+                <img src={userJson.avatar}></img>
+              </td>
             </tr>
             <tr>
               <td>user id</td>
