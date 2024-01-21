@@ -3,6 +3,8 @@ nextjs-auth
 
 A Next.js example for Casdoor SSO.
 
+Live demo: https://nextjs-auth.casdoor.org
+
 ## Demo video
 
 ![Login](./img/demo.gif)
@@ -20,7 +22,8 @@ ORGANIZATION_NAME=casbin
 APPLICATION_NAME=app-vue-python-example
 ```
 
-## Getting Started
+## Getting started
+
 run the development server:
 
 ```bash
