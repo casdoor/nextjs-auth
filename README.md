@@ -1,10 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+nextjs-auth
+=======
 
-## Demo videos
+A Next.js example for Casdoor SSO.
+
+## Demo video
+
 ![Login](./img/demo.gif)
 
 ## Configuration
-```plaintext
+
+`APP_REDIRECT_URL` is your web application's URL, other settings are Casdoor related.
+
+```ini
 APP_REDIRECT_URL=http://localhost:3000/login
 SERVER_URL=https://door.casdoor.com
 CLIENT_ID=294b09fbc17f95daf2fe
@@ -14,12 +21,9 @@ APPLICATION_NAME=app-vue-python-example
 ```
 
 ## Getting Started
-
 run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
