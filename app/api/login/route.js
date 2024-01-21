@@ -20,12 +20,12 @@ export async function GET(req) {
 
   const tokenConfig = {
     method: "POST",
-    url: `${process.env.CASDOOR_ENDPOINT}/api/login/oauth/access_token`,
+    url: `${process.env.SERVER_URL}/api/login/oauth/access_token`,
     data: {
       code: code,
       grant_type: "authorization_code",
-      client_secret: process.env.NEXT_PUBLIC_CASDOOR_CLIENT_SECRET,
-      client_id: process.env.NEXT_PUBLIC_CASDOOR_CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
+      client_id: process.env.CLIENT_ID,
     },
   };
 

@@ -5,12 +5,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Configuration
 ```plaintext
-CASDOOR_REDIRECT_URI=http://localhost:3000/login
-CASDOOR_ENDPOINT=https://door.casdoor.com
-NEXT_PUBLIC_CASDOOR_CLIENT_ID=294b09fbc17f95daf2fe
-NEXT_PUBLIC_CASDOOR_CLIENT_SECRET=dd8982f7046ccba1bbd7851d5c1ece4e52bf039d
-CASDOOR_APPLICATION_NAME=app-vue-python-example
-CASDOOR_ORGANIZATION_NAME=casbin
+APP_REDIRECT_URL=http://localhost:3000/login
+SERVER_URL=https://door.casdoor.com
+CLIENT_ID=294b09fbc17f95daf2fe
+CLIENT_SECRET=dd8982f7046ccba1bbd7851d5c1ece4e52bf039d
+ORGANIZATION_NAME=casbin
+APPLICATION_NAME=app-vue-python-example
 ```
 
 ## Getting Started
