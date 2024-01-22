@@ -13,6 +13,7 @@
 // limitations under the License.
 import axios from "axios";
 import jwt from "jsonwebtoken";
+import config  from "../../conf";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
@@ -20,12 +21,12 @@ export async function GET(req) {
 
   const tokenConfig = {
     method: "POST",
-    url: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/login/oauth/access_token`,
+    url: `${config.serverUrl}/api/login/oauth/access_token`,
     data: {
       code: code,
       grant_type: "authorization_code",
-      client_secret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
-      client_id: process.env.NEXT_PUBLIC_CLIENT_ID,
+      client_secret: config.clientSecret,
+      client_id: config.clientId,
     },
   };
 
@@ -34,7 +35,7 @@ export async function GET(req) {
     const token = response.data.access_token;
     const decodeToken = jwt.decode(token);
 
-    return Response.json({decodeToken});
+    return Response.json({ decodeToken });
   } catch (error) {
     console.error("Error getting access token:", error.message);
   }

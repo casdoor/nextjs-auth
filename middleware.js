@@ -12,21 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 import { NextResponse } from "next/server";
+import config from "/app/conf";
+import { parse } from "url";
 
 const protectedRoutes = ["/profile"];
 
 export default function middleware(req) {
   const casdoorUserCookie = req.cookies.get("casdoorUser");
   const isAuthenticated = casdoorUserCookie ? true : false;
+  const currentUrl = parse(req.url);
+  const redirectUrl = `${currentUrl.protocol}//${currentUrl.host}/login`;
 
   if (!isAuthenticated && protectedRoutes.includes(req.nextUrl.pathname)) {
     const casdoorLoginURL = `${
-      process.env.NEXT_PUBLIC_SERVER_URL
+      config.serverUrl
     }/login/oauth/authorize?client_id=${
-      process.env.NEXT_PUBLIC_CLIENT_ID
+      config.clientId
     }&response_type=code&redirect_uri=${encodeURIComponent(
-      process.env.NEXT_PUBLIC_APP_REDIRECT_URL
-    )}&scope=read&state=${process.env.NEXT_PUBLIC_APPLICATION_NAME}`;
+      redirectUrl
+    )}&scope=read&state=${config.applicationName}`;
 
     return NextResponse.redirect(casdoorLoginURL);
   }
