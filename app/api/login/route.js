@@ -34,7 +34,7 @@ export async function GET(req) {
     const token = response.data.access_token;
     const decodeToken = jwt.decode(token);
 
-    return Response.json(decodeToken);
+    return Response.json({decodeToken});
   } catch (error) {
     console.error("Error getting access token:", error.message);
   }
