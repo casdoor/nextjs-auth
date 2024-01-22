@@ -14,6 +14,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
 
 const LoginCallback = (params) => {
   const router = useRouter();
@@ -21,18 +22,19 @@ const LoginCallback = (params) => {
   const code = searchParams.code;
   const state = searchParams.state;
 
-  const setCookie = async () => {
-    const response = await fetch(`/api/login?code=${code}&state=${state}`);
-    if (response.ok == true) {
-      const user = await response.json();
-      Cookies.set("casdoorUser", JSON.stringify(user));
-      router.push("/profile");
-    } else {
-      console.error("Error:", response.error);
-    }
-  };
-
-  setCookie();
+  useEffect(() => {
+    fetch(`/api/login?code=${code}&state=${state}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        Cookies.set("casdoorUser", JSON.stringify(data.decodeToken));
+        router.push("/profile");
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 };
 
 export default LoginCallback;
