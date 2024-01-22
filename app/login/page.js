@@ -33,7 +33,6 @@ const LoginCallback = (params) => {
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        // 在此处处理错误，例如显示错误消息给用户
       });
   }, []);
 };

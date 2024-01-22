@@ -21,12 +21,12 @@ export default function middleware(req) {
 
   if (!isAuthenticated && protectedRoutes.includes(req.nextUrl.pathname)) {
     const casdoorLoginURL = `${
-      process.env.SERVER_URL
+      process.env.NEXT_PUBLIC_SERVER_URL
     }/login/oauth/authorize?client_id=${
-      process.env.CLIENT_ID
+      process.env.NEXT_PUBLIC_CLIENT_ID
     }&response_type=code&redirect_uri=${encodeURIComponent(
-      process.env.APP_REDIRECT_URL
-    )}&scope=read&state=${process.env.APPLICATION_NAME}`;
+      process.env.NEXT_PUBLIC_APP_REDIRECT_URL
+    )}&scope=read&state=${process.env.NEXT_PUBLIC_APPLICATION_NAME}`;
 
     return NextResponse.redirect(casdoorLoginURL);
   }
