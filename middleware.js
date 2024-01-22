@@ -19,6 +19,8 @@ const protectedRoutes = ["/profile"];
 export default function middleware(req) {
   const casdoorUserCookie = req.cookies.get("casdoorUser");
   const isAuthenticated = casdoorUserCookie ? true : false;
+  const currentUrl = parse(req.url);
+  const redirectUrl = `${currentUrl.protocol}//${currentUrl.host}/login`;
 
   if (!isAuthenticated && protectedRoutes.includes(req.nextUrl.pathname)) {
     const casdoorLoginURL = `${
