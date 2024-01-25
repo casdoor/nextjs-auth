@@ -13,6 +13,7 @@
 // limitations under the License.
 import { NextResponse } from "next/server";
 import config from "/app/conf";
+import { parse } from "url";
 
 const protectedRoutes = ["/profile"];
 
@@ -28,7 +29,7 @@ export default function middleware(req) {
     }/login/oauth/authorize?client_id=${
       config.clientId
     }&response_type=code&redirect_uri=${encodeURIComponent(
-      config.redirectUrl
+      redirectUrl
     )}&scope=read&state=${config.applicationName}`;
     
     return NextResponse.redirect(casdoorLoginURL);
