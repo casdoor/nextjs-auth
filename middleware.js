@@ -31,7 +31,7 @@ export default function middleware(req) {
     }&response_type=code&redirect_uri=${encodeURIComponent(
       redirectUrl
     )}&scope=read&state=${config.applicationName}`;
-
+    
     return NextResponse.redirect(casdoorLoginURL);
   }
 }
