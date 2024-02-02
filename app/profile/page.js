@@ -20,10 +20,12 @@ export default function Page() {
   const router = useRouter();
   const user = Cookies.get("casdoorUser");
   const userJson = user ? JSON.parse(user) : {};
+
   const handleLogout = () => {
     Cookies.remove("casdoorUser");
     router.push("/");
   };
+
   return (
     <>
       <h1>Hello {userJson.name}!</h1>
@@ -32,26 +34,22 @@ export default function Page() {
         <table>
           <tbody>
           <tr>
-            <td>Organization</td>
-            <td>{userJson.owner}</td>
-          </tr>
-          <tr>
             <td>Username</td>
-            <td>{userJson.name}</td>
+            <td>{userJson.preferred_username}</td>
           </tr>
           <tr>
-            <td>Avatar</td>
-            <td>
-              <img src={userJson.avatar}></img>
-            </td>
+            <td>Display Name</td>
+            <td>{userJson.name}</td>
           </tr>
           <tr>
             <td>User ID</td>
             <td>{userJson.sub}</td>
           </tr>
           <tr>
-            <td>Created Time</td>
-            <td>{userJson.createdTime}</td>
+            <td>Avatar</td>
+            <td>
+              <img src={userJson.picture}></img>
+            </td>
           </tr>
           </tbody>
         </table>

@@ -14,15 +14,16 @@ Live demo: https://nextjs-auth.casdoor.org
 The default [config.js](app/conf.js) points to the Casdoor demo site. Change it to your own Casdoor: 
 
 ```js
-const config = {
-  serverUrl:"https://door.casdoor.com",
-  clientId:"294b09fbc17f95daf2fe",
-  clientSecret:"dd8982f7046ccba1bbd7851d5c1ece4e52bf039d",
-  organizationName:"casbin",
-  applicationName:"app-vue-python-example"
+const sdkConfig = {
+  serverUrl: "https://door.casdoor.com",
+  clientId: "294b09fbc17f95daf2fe",
+  clientSecret: "dd8982f7046ccba1bbd7851d5c1ece4e52bf039d",
+  organizationName: "casbin",
+  appName: "app-vue-python-example",
+  redirectPath: "/callback",
 }
 
-export default config;
+export default sdkConfig;
 ```
 
 ## Getting started
