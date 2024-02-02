@@ -12,29 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 "use client";
-import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 import { useEffect } from "react";
+import Sdk from "casdoor-js-sdk";
+import sdkConfig from "@/app/conf";
 
-const LoginCallback = (params) => {
-  const router = useRouter();
-  const searchParams = params.searchParams;
-  const code = searchParams.code;
-  const state = searchParams.state;
-
+const Login = () => {
   useEffect(() => {
-    fetch(`/api/login?code=${code}&state=${state}`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        Cookies.set("casdoorUser", JSON.stringify(data.decodeToken));
-        router.push("/profile");
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    const CasdoorSDK = new Sdk(sdkConfig);
+    CasdoorSDK.signin_redirect();
   }, []);
+
+  return <></>;
 };
 
-export default LoginCallback;
+export default Login;
