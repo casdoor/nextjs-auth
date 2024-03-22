@@ -25,14 +25,12 @@ export const AuthCallback = () => {
   useEffect(() => {
     const CasdoorSDK = new Sdk(sdkConfig);
 
-    const additionalParams = {
-      client_secret: sdkConfig.clientSecret,
-    };
-
-    CasdoorSDK.exchangeForAccessToken(additionalParams)
+    CasdoorSDK.exchangeForAccessToken()
       .then((res) => {
         if (res && res.access_token) {
           return CasdoorSDK.getUserInfo(res.access_token);
+        } else {
+          throw new Error(res.error_description);
         }
       })
       .then((res) => {

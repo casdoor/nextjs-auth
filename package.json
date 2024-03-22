@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^1.6.5",
-    "casdoor-js-sdk": "^0.11.0",
+    "casdoor-js-sdk": "^0.13.0",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "next": "14.0.4",
