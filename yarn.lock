@@ -435,12 +435,13 @@ caniuse-lite@^1.0.30001406:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001583.tgz#abb2970cc370801dc7e27bf290509dc132cfa390"
   integrity sha512-acWTYaha8xfhA/Du/z4sNZjHUWjkiuoAi2LM+T/aL+kemKQgPT1xBb/YKjlQ0Qo8gvbHsGNplrEJ+9G3gL7i4Q==
 
-casdoor-js-sdk@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/casdoor-js-sdk/-/casdoor-js-sdk-0.11.0.tgz#fbc193f0ea77f03c7b26b57d9737fd7d7f1c65f7"
-  integrity sha512-6MdULUb/UfyvXtS35DtvnbJ7K8ABGNFlokwpZpZuMEWl3WU89MWJgL872T/kZV8+Yjl3hVBXdg9256uW3v66sg==
+casdoor-js-sdk@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/casdoor-js-sdk/-/casdoor-js-sdk-0.13.0.tgz"
+  integrity sha512-aawLvNR5+iKhOtdNeyu1cBH9CpUKtrJSFcDZDQOGlf3Rh/PJuEwtunfzfCocahR0BMaq2POcWfbxlBWfGq45QQ==
   dependencies:
     js-pkce "^1.3.0"
+    jwt-decode "^4.0.0"
 
 chalk@^4.0.0:
   version "4.1.2"
@@ -1467,6 +1468,11 @@ jws@^3.2.2:
   dependencies:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
+
+jwt-decode@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-4.0.0.tgz"
+  integrity sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==
 
 keyv@^4.5.3:
   version "4.5.4"
