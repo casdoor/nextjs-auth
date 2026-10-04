@@ -11,51 +11,65 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-"use client";
-import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
-import "@/app/global.css";
 
-export default function Page() {
-  const router = useRouter();
-  const user = Cookies.get("casdoorUser");
-  const userJson = user ? JSON.parse(user) : {};
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { getUserinfo, verifyToken } from "@/lib/casdoor";
+import { readSession } from "@/lib/session";
 
-  const handleLogout = () => {
-    Cookies.remove("casdoorUser");
-    router.push("/");
-  };
+export default async function Page() {
+  const token = readSession(await cookies());
+  const claims = await verifyToken(token);
+  if (!claims) {
+    redirect("/login?returnTo=/profile");
+  }
+
+  // The user as Casdoor has it now, the claims of the token are the fallback.
+  const user = (await getUserinfo(token)) || {};
+  const username = user.preferred_username || claims.name;
+  const displayName = user.name || claims.displayName || username;
+  const avatar = user.picture || claims.avatar;
 
   return (
-    <>
-      <h1>Hello {userJson.name}!</h1>
+    <div className="container">
+      <h1>Hello {displayName}!</h1>
       <hr />
-      <div className="container">
-        <table>
-          <tbody>
+      <table>
+        <tbody>
           <tr>
             <td>Username</td>
-            <td>{userJson.preferred_username}</td>
+            <td>{username}</td>
           </tr>
           <tr>
             <td>Display Name</td>
-            <td>{userJson.name}</td>
+            <td>{displayName}</td>
+          </tr>
+          <tr>
+            <td>Organization</td>
+            <td>{claims.owner}</td>
           </tr>
           <tr>
             <td>User ID</td>
-            <td>{userJson.sub}</td>
+            <td>{claims.sub}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{user.email || claims.email}</td>
           </tr>
           <tr>
             <td>Avatar</td>
-            <td>
-              <img src={userJson.picture}></img>
-            </td>
+            {/* eslint-disable-next-line @next/next/no-img-element -- avatars are on any host */}
+            <td>{avatar && <img src={avatar} alt="avatar" width={64} height={64} />}</td>
           </tr>
-          </tbody>
-        </table>
-        <br/>
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-    </>
+          <tr>
+            <td>Session expires</td>
+            <td>{new Date(claims.exp * 1000).toISOString()}</td>
+          </tr>
+        </tbody>
+      </table>
+      <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+      </form>
+    </div>
   );
 }

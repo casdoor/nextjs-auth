@@ -6,19 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
-    "axios": "^1.6.5",
-    "casdoor-js-sdk": "^0.13.0",
-    "js-cookie": "^3.0.5",
-    "jsonwebtoken": "^9.0.2",
-    "next": "14.0.4",
-    "react": "^18",
-    "react-dom": "^18"
+    "jose": "^6.2.12",
+    "next": "^16.3.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-next": "14.0.4"
+    "eslint": "^9.39.0",
+    "eslint-config-next": "^16.3.8",
+    "typescript": "^6.0.0"
   }
 }

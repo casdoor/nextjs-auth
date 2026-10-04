@@ -1,4 +1,4 @@
-// Copyright 2024 The Casdoor Authors. All Rights Reserved.
+// Copyright 2026 The Casdoor Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,15 +11,13 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 import { NextResponse } from "next/server";
+import { clearSession } from "@/lib/session";
 
-const protectedRoutes = ["/profile"];
-
-export default function middleware(req) {
-  const casdoorUserCookie = req.cookies.get("casdoorUser");
-  const isAuthenticated = casdoorUserCookie ? true : false;
-
-  if (!isAuthenticated && protectedRoutes.includes(req.nextUrl.pathname)) {
-    return NextResponse.redirect(new URL('/login', req.url))
-  }
+// POST only, so another site can not log the user out with a link or an image.
+export async function POST(request) {
+  const response = NextResponse.redirect(new URL("/", request.nextUrl.origin), 303);
+  clearSession(response, request.cookies);
+  return response;
 }

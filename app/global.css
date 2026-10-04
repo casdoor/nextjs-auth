@@ -1,3 +1,7 @@
+body {
+  font-family: system-ui, sans-serif;
+}
+
 table {
   border-spacing: 10px;
   width: 50%;
@@ -16,13 +20,24 @@ th {
   background-color: #f2f2f2;
 }
 
-Button {
+button,
+.button {
   font-size: 20px;
+  padding: 4px 16px;
+  color: black;
+  background: #f2f2f2;
+  border: 1px solid black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.container{
+.error {
+  color: #c00;
+}
+
+.container {
   display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

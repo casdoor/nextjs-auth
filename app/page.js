@@ -11,19 +11,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-"use client";
-import { useRouter } from "next/navigation";
 
-export default function Page() {
-  const router = useRouter();
+export default async function Page({ searchParams }) {
+  const { error } = await searchParams;
 
-  const handleLogin = () => {
-    router.push("/profile");
-  };
   return (
-    <>
+    <div className="container">
       <h1>Casdoor Nextjs-Auth example</h1>
-      <button onClick={handleLogin}>Login</button>
-    </>
+      {typeof error === "string" && <p className="error">Login failed: {error}</p>}
+      <a className="button" href="/profile">Login</a>
+    </div>
   );
 }
